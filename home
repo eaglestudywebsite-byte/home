@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eagle Study Loan - Education Financing Without Collateral</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #2e86c1;
+            --accent: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            padding-top: 80px;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+            margin: 0 10px;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        
+        .btn-accent:hover {
+            background-color: #e67e22;
+            border-color: #e67e22;
+            color: white;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 15px 0;
+        }
+        
+        .feature-box {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+            background: white;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .testimonial {
+            background-color: var(--light);
+            padding: 60px 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 15px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-links h5 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .page-section {
+            display: none;
+            padding: 60px 0;
+        }
+        
+        .active-page {
+            display: block;
+        }
+        
+        .form-control {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.25rem rgba(46, 134, 193, 0.25);
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-right: 15px;
+        }
+        
+        .benefit-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .benefit-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stats-label {
+            color: var(--dark);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-graduation-cap me-2"></i>Eagle Study Loan
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-link" href="#contact">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-link" href="#apply">Apply Now</a>
+                    </li>
+                </ul>
+                <a href="#apply" class="btn btn-accent ms-3 page-link">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <section id="home" class="page-section active-page">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="container">
+                <h1 class="display-4 fw-bold mb-4">Education Loans Without Property or Security</h1>
+                <p class="lead mb-5">Achieve your academic dreams with our hassle-free education financing solutions. No collateral required.</p>
+                <a href="#apply" class="btn btn-accent btn-lg page-link">Apply Now</a>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>No Property Required</h3>
+                        <p>Get education financing without mortgaging property or assets.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <h3>No Security</h3>
+                        <p>We believe in your potential, not collateral security.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Quick Approval</h3>
+                        <p>Fast processing and quick disbursement of loans.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="container mb-5">
+            <h2 class="section-title text-center">How It Works</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Process" class="img-fluid rounded">
+                </div>
+                <div class="col-lg-6">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-1"></i>
+                        </div>
+                        <div>
+                            <h4>Apply Online</h4>
+                            <p>Fill out our simple application form with your basic details and educational information.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-2"></i>
+                        </div>
+                        <div>
+                            <h4>Submit Documents</h4>
+                            <p>Upload required documents including academic records and identification.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-3"></i>
+                        </div>
+                        <div>
+                            <h4>Get Approved</h4>
+                            <p>Receive approval within 3-5 business days after document verification.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-4"></i>
+                        </div>
+                        <div>
+                            <h4>Receive Funds</h4>
+                            <p>Loan amount disbursed directly to your educational institution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="bg-light py-5">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-3 col-6">
+                        <div class="stats-number">5,000+</div>
+                        <div class="stats-label">Students Funded</div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stats-number">₹250Cr+</div>
+                        <div class="stats-label">Loan Disbursed</div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stats-number">98%</div>
+                        <div class="stats-label">Approval Rate</div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stats-number">500+</div>
+                        <div class="stats-label">Institutions Covered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="testimonial">
+            <div class="container">
+                <h2 class="section-title text-center">Success Stories</h2>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"Eagle Study Loan made it possible for me to pursue my MBA without putting any burden on my family. The process was smooth and hassle-free."</p>
+                            <div class="testimonial-author">- Priya Sharma, IIM Ahmedabad</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"As a first-generation college student, I had no property to offer as security. Eagle believed in my potential and supported my engineering dreams."</p>
+                            <div class="testimonial-author">- Rohan Patel, BITS Pilani</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"The quick approval process and flexible repayment options helped me focus on my studies rather than worrying about finances."</p>
+                            <div class="testimonial-author">- Aisha Khan, Harvard University</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Page -->
+    <section id="about" class="page-section">
+        <div class="container">
+            <h2 class="section-title">About Eagle Study Loan</h2>
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <h3>Our Mission</h3>
+                    <p>Eagle Study Loan was founded with a simple mission: to make quality education accessible to every deserving student, regardless of their financial background or access to property security.</p>
+                    <p>We believe that education is the most powerful tool for social and economic mobility, and no student should be denied this opportunity due to lack of collateral.</p>
+                    
+                    <h3>Our Values</h3>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Trust & Transparency</h4>
+                            <p>We maintain complete transparency in our processes with no hidden charges or conditions.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div>
+                            <h4>Student-Centric Approach</h4>
+                            <p>Our solutions are designed keeping students' needs and constraints in mind.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h4>Innovation</h4>
+                            <p>We continuously innovate our products to serve students better.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About Us" class="img-fluid rounded">
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3>Why Choose Us?</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <h4>No Collateral Required</h4>
+                                    <p>We don't ask for property or security against education loans.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <h4>Competitive Interest Rates</h4>
+                                    <p>We offer some of the most competitive rates in the industry.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <h4>Flexible Repayment</h4>
+                                    <p>Choose repayment options that work for your career trajectory.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <h4>Pan-India Coverage</h4>
+                                    <p>We serve students across India and in international institutions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Page -->
+    <section id="contact" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Get in Touch</h3>
+                    <p>Have questions about our education loans? Our team is here to help you understand the process and find the best financing solution for your needs.</p>
+                    
+                    <div class="contact-info">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Address</h5>
+                                <p>Eagle Financial Center, 123 Education Road, Mumbai, Maharashtra 400001</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5>Phone</h5>
+                                <p>+91 1800-123-4567 (Toll-Free)</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email</h5>
+                                <p>info@eaglestudyloan.com</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h5>Working Hours</h5>
+                                <p>Monday to Saturday: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Send us a Message</h4>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Your Name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" class="form-control" placeholder="Your Email">
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Subject">
+                                <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Map -->
+        <div class="container mt-5">
+            <div class="card shadow">
+                <div class="card-body p-0">
+                    <div style="width: 100%">
+                        <iframe 
+                            width="100%" 
+                            height="400" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            marginheight="0" 
+                            marginwidth="0" 
+                            src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Mumbai+(Eagle%20Study%20Loan)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                        >
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply Now Page -->
+    <section id="apply" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Apply for Education Loan</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow">
+                        <div class="card-body p-4 p-md-5">
+                            <h4 class="text-center mb-4">Loan Application Form</h4>
+                            <form>
+                                <h5 class="mb-3">Personal Information</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="First Name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="email" class="form-control" placeholder="Email Address">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="tel" class="form-control" placeholder="Phone Number">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="date" class="form-control" placeholder="Date of Birth">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select class="form-control">
+                                            <option>Select Gender</option>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <h5 class="mt-4 mb-3">Educational Information</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <select class="form-control">
+                                            <option>Select Course</option>
+                                            <option>Undergraduate</option>
+                                            <option>Postgraduate</option>
+                                            <option>Doctorate</option>
+                                            <option>Diploma</option>
+                                            <option>Certification</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Course Name">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="University/Institution Name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select class="form-control">
+                                            <option>Select Country</option>
+                                            <option>India</option>
+                                            <option>United States</option>
+                                            <option>United Kingdom</option>
+                                            <option>Australia</option>
+                                            <option>Canada</option>
+                                            <option>Germany</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control" placeholder="Course Duration (Years)">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control" placeholder="Total Course Fee (₹)">
+                                    </div>
+                                </div>
+                                
+                                <h5 class="mt-4 mb-3">Loan Details</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control" placeholder="Loan Amount Required (₹)">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select class="form-control">
+                                            <option>Select Employment Type</option>
+                                            <option>Student</option>
+                                            <option>Employed</option>
+                                            <option>Self-Employed</option>
+                                            <option>Unemployed</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-check mt-4">
+                                    <input class="form-check-input" type="checkbox" id="terms">
+                                    <label class="form-check-label" for="terms">
+                                        I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary w-100 mt-4">Submit Application</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="section-title">Required Documents</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item"><i class="fas fa-file-alt me-2"></i> Identity Proof (Aadhaar, PAN, Passport)</li>
+                                <li class="list-group-item"><i class="fas fa-file-alt me-2"></i> Address Proof</li>
+                                <li class="list-group-item"><i class="fas fa-file-alt me-2"></i> Academic Mark sheets and Certificates</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item"><i class="fas fa-file-alt me-2"></i> Admission Letter from Institution</li>
+                                <li class="list-group-item"><i class="fas fa-file-alt me-2"></i> Fee Structure from Institution</li>
+                                <li class="list-group-item"><i class="fas fa-file-alt me-2"></i> Passport Size Photographs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="text-white mb-4">Eagle Study Loan</h3>
+                    <p>Making education accessible to all through innovative financing solutions without the need for property or security.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="me-3 text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3 text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-3 text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0 footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#home" class="page-link">Home</a></li>
+                        <li><a href="#about" class="page-link">About Us</a></li>
+                        <li><a href="#contact" class="page-link">Contact Us</a></li>
+                        <li><a href="#apply" class="page-link">Apply Now</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0 footer-links">
+                    <h5>Our Products</h5>
+                    <ul>
+                        <li><a href="#">Undergraduate Loans</a></li>
+                        <li><a href="#">Postgraduate Loans</a></li>
+                        <li><a href="#">Study Abroad Loans</a></li>
+                        <li><a href="#">Career Development Loans</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 footer-links">
+                    <h5>Subscribe to Newsletter</h5>
+                    <p>Stay updated with our latest offers and news</p>
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                            <button class="btn btn-accent" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center copyright">
+                <p>© 2023 Eagle Study Loan. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple page navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const pageLinks = document.querySelectorAll('.page-link');
+            const pageSections = document.querySelectorAll('.page-section');
+            
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    // Update active link
+                    pageLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show target section
+                    pageSections.forEach(section => {
+                        section.classList.remove('active-page');
+                        if (section.id === targetId) {
+                            section.classList.add('active-page');
+                        }
+                    });
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
